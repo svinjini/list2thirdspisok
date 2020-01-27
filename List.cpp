@@ -24,7 +24,6 @@ List& List::operator +=(int x){
 		return *this;
 	}
 void List::deleteNode(Node*a){
-		   a->pre->next=a->next;
 		   delete a;
 		}
 List::List(){
