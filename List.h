@@ -12,12 +12,12 @@ public:
 					value=0;
 				}		
 		};
+		int count;
 		Node* head;
 		Node* tail;
 	List();
 	void deleteNode(Node* a);
-	std::ostream &operator <<(std::ostream& out, List& obj);
+	friend std::ostream &operator <<(std::ostream& out, List& obj);
 	List& operator +=(int x);
 	~List();
-	
 	};
