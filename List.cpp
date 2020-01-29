@@ -8,10 +8,11 @@ List::List(){
 	}
 std::ostream &operator <<(std::ostream& out, List& obj){
 		List::Node* temp=obj.head;
-		while(obj.count!=0){
+		int i=obj.count;
+		while(i!=0){
 				out<<temp->value<<std::endl;
 				temp=temp->next;
-				obj.count--;
+				i--;
 			}
 			return out;
 	}
@@ -60,6 +61,9 @@ List& List::operator +=(int x){
 void List::deleteNode(Node* a){
 		   delete a;
 		}
+List::List(List&& obj){
+		count=obj.count;
+	}
 List::~List(){
 		Node* temp;
 		while(count!=0){

@@ -16,6 +16,7 @@ public:
 		Node* head;
 		Node* tail;
 	List();
+	List(List&& obj);
 	friend bool lookforSame(int x, List& obj);
 	void deleteNode(Node* a);
 	friend std::ostream &operator <<(std::ostream& out, List& obj);
