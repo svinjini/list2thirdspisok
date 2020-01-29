@@ -5,6 +5,6 @@
 		listok +=5;
 		listok +=6;
 		listok +=7;
-		std::cout<<listok<<std::endl;
+		//std::cout<<listok<<std::endl;
 		return 0;
 	 }

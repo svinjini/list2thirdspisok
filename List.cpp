@@ -17,20 +17,21 @@ std::ostream &operator <<(std::ostream& out, List& obj){
 List& List::operator +=(int x){
 	    Node* temp;
 		if(count==0){
+				head=new Node();
 				tail=new Node();
 				head->value=x;
 				head->next=tail;
 				tail->pre=head;
-				count++;
+				++count;
 			}
 		else{
-			temp=tail;
-			tail=new Node();
-			tail->pre=temp;
-			temp->value=x;
-			temp->next=tail;
-			count++;
-		}
+				temp=tail;
+				tail=new Node();
+				tail->pre=temp;
+				temp->value=x;
+				temp->next=tail;
+				++count;
+			}
 		return *this;
 	}
 void List::deleteNode(Node*a){
@@ -41,14 +42,14 @@ List::~List(){
 		while(count!=0){
 			if(tail->pre==head){
 					deleteNode(head);
-					count--;
+					count=count-1;
 			}
 			else{
 					temp=tail->pre;
 					temp->pre->next=tail;
 					tail->pre=temp->pre;
-					deleteNode(tail->pre);
-					count--;
+					deleteNode(temp);
+					count=count-1;
 			}
 		}
 	}
