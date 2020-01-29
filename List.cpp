@@ -8,33 +8,56 @@ List::List(){
 	}
 std::ostream &operator <<(std::ostream& out, List& obj){
 		List::Node* temp=obj.head;
-		while(temp){
+		while(obj.count!=0){
 				out<<temp->value<<std::endl;
 				temp=temp->next;
+				obj.count--;
 			}
 			return out;
 	}
+bool lookforSame(int x, List& obj) {
+	List::Node* temp;
+	temp = obj.tail->pre;
+	for (int i = obj.count; i > 0;--i) {
+		if (temp->value == x) {
+			return true;
+			break;
+		}
+		temp = temp->pre;
+	}
+}
 List& List::operator +=(int x){
-	    Node* temp;
-		if(count==0){
-				head=new Node();
-				tail=new Node();
-				head->value=x;
-				head->next=tail;
-				tail->pre=head;
+			int tempest;
+			Node* temp;
+			if (count == 0) {
+				head = new Node();
+				tail = new Node();
+				head->value = x;
+				head->next = tail;
+				tail->pre = head;
 				++count;
 			}
-		else{
-				temp=tail;
-				tail=new Node();
-				tail->pre=temp;
-				temp->value=x;
-				temp->next=tail;
-				++count;
+			else {
+				if (lookforSame(x, *this) != true) {
+					temp = tail;
+					tail = new Node();
+					tail->pre = temp;
+					temp->value = x;
+					temp->next = tail;
+					++count;
+					while ((temp ->pre!= nullptr)&&(temp->pre->value >= temp->value)) {
+						if (temp->pre->value > temp->value) {
+							tempest = temp->pre->value;
+							temp->pre->value = temp->value;
+							temp->value = tempest;
+							temp = temp->pre;
+						}
+					}
+				}
 			}
 		return *this;
 	}
-void List::deleteNode(Node*a){
+void List::deleteNode(Node* a){
 		   delete a;
 		}
 List::~List(){
