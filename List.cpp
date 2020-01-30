@@ -61,6 +61,21 @@ List& List::operator +=(int x){
 void List::deleteNode(Node* a){
 		   delete a;
 		}
+List& List::operator &(const List& ob){
+	    List newList;
+	    Node* current;
+	    current=this->head;
+		while(current!=this->tail){
+			newList+=current->value;
+			current=current->next;
+		}
+		current=ob.head;
+		while(current!=ob.tail){
+			newList+=current->value;
+			current=current->next;
+		}
+		std::cout<<newList<<std::endl;
+	}
 List::List(List&& obj){
 		count=obj.count;
 	}

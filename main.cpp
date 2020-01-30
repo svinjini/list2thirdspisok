@@ -7,6 +7,10 @@
 		listok +=6;
 		listok +=7;
 		listok +=7;
-		std::cout<<listok<<std::endl;
+		List listok1;
+		listok1+=4;
+		listok1+=1;
+		listok & listok1;
+		std::cout<<listok1<<std::endl;
 		return 0;
 	 }
